@@ -90,16 +90,18 @@ sites$campuscol <- ifelse(sites$campus == 1, "red", "black")
 ```{r}
 
 theme_set(cowplot::theme_cowplot())
-tidyquant::tq_get(x = c("AAPL", "GOOG"), 
-                  get = "stock.prices", 
-                  from = "1950-01-01") %>% arrange(date) %>% 
-  ggplot(aes(date, close, fill = symbol, color = symbol)) +
-  geom_area(alpha = .7, color = "black", size = .2) +
-  geom_smooth(se = T, size = 1.5) +
-  scale_x_date(limits = c(as.Date("2004-01-01"), as.Date("2022-09-01"))) +
-  scale_fill_viridis_d(option = "cividis") -> p1
+df_stocks <- tidyquant::tq_get(x = c("AAPL", "GOOG"), 
+                               get = "stock.prices", 
+                               from = "1950-01-01") %>% 
+                          arrange(date)  
 
-plotly::ggplotly(p1)
+plot_stocks <- ggplot(df_stocks, aes(date, close, fill = symbol, color = symbol)) +
+                geom_area(alpha = .7, color = "black", size = .2) +
+                geom_smooth(se = T, size = 1.5) +
+                scale_x_date(limits = c(as.Date("2004-01-01"), as.Date("2022-09-01"))) +
+                scale_fill_viridis_d(option = "cividis")
+
+plotly::ggplotly(plot_stocks)
 ```
 
 ### Chart B
@@ -148,7 +150,7 @@ leaflet() %>%
 
 ```{r}
 DT::datatable(
-  mpg, extensions = c('Responsive','Buttons'), options = list(
+  df_stocks, extensions = c('Responsive','Buttons'), options = list(
     pageLength = 12,
     autowidth = T,
     dom = 'Bfrtip',
