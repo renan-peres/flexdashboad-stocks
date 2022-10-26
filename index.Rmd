@@ -146,7 +146,7 @@ leaflet() %>%
 ## Column {data-width=1000, .tabset}
 
 
-### MPG
+### Stocks
 
 ```{r}
 DT::datatable(
