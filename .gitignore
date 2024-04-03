@@ -1,5 +1,8 @@
-.Rproj.user
+# Ignore R project user files
+.Rproj.user/
 .Rhistory
 .RData
 .Ruserdata
-.png
+
+# Ignore PNG files
+*.png
