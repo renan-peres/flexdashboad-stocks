@@ -1,8 +1,1 @@
-# Ignore R project user files
-.Rproj.user/
-.Rhistory
-.RData
-.Ruserdata
 
-# Ignore Folder
-Folder/
