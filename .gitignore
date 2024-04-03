@@ -6,6 +6,3 @@
 
 # Ignore Folder
 Folder/
-
-# Ignore Folder but Specific File
-!Folder/picture.png
